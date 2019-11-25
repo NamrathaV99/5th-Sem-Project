@@ -1,0 +1,20 @@
+import sqlite3
+conn=sqlite3.connect('HMS.db')
+print("opened")
+
+#conn.execute('''CREATE TABLE LOGIN(id varchar(10) primary key not null,password varchar(10) not null);''')
+#print("Login table created ")
+#conn.execute('''CREATE TABLE PATIENT(pid varchar(10) primary key not null,pname varchar(20),page int,pgender varchar(6),foreign key(pid) references login(id));''')
+#print("Patient table created ")
+#conn.execute('''CREATE TABLE DOCTOR(did varchar(10) primary key not null,dname varchar(20),foreign key(did) references login(id));''')
+#print("Doctor table created ")
+#conn.execute('''CREATE TABLE PATIENT_DOCTOR(pid varchar(10),did varchar(10),primary key(pid,did),foreign key(pid) references patient(pid),foreign key(did) references doctor(did) );''')
+#print("Patient-Doctor table created ")
+#conn.execute('''CREATE TABLE PRESCRIPTION(pid varchar(10),tname varchar(10),tmg int,timing varchar(10),primary key(pid,tmg),foreign key(pid) references patient(pid) );''')
+#print("Prescription table created ")
+rows=conn.execute("Select * from login")
+for row in rows:
+    print("Id=",row[0])
+    print("Name=",row[1])
+print("Success")
+conn.close()
